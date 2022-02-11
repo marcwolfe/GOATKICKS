@@ -1,18 +1,28 @@
 require('dotenv').config()
 const express = require('express');
 const app = express();
+const { OAuth2Client } = require('google-auth-library');
 const mongoose = require('mongoose');
 const MONGODB_URI = process.env.MONGODB_URI
 const cors = require('cors');
 const session = require('express-session')
-const yelp = require('yelp-fusion');
-const apiKey = process.env.REACT_APP_API_KEY
 const PORT = process.env.PORT;
 const MongoDBStore = require('connect-mongodb-session')(session)
+const bodyParser = require('body-parser')
+
+const client = new OAuth2Client(process.env.REACT_APP_GOOGLE_CLIENT_ID);
+
+app.use(bodyParser.json({limit: "30mb", extended: true}));
+app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
+
+
+const CONNECTION_URL = 'mongodb+srv://Marc:1234@cluster0.4bfth.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+
+
 
 
 //SETUP CORS middleware
-const whitelist = ['http://localhost:3000', 'herokufrontendaddress']
+const whitelist = ['http://localhost:3000', 'herokufrontendaddress', 'process.env.PORT']
 const corsOptions = {
     origin: (origin, callback) => {
         if(whitelist.indexOf(origin) !== -1 || !origin){
@@ -25,7 +35,6 @@ const corsOptions = {
     credentials:true
 }
 
-app.use(cors(corsOptions))
 
 
 const SESSION_SECRET = process.env.SESSION_SECRET
@@ -69,19 +78,19 @@ const isAuthenticated = (req, res, next) => {
     }
 }
 
+app.use(cors(corsOptions))
 //this will tell server to parse JSON data, and create req.body object.
 app.use(express.json())
 
 
-
 //controllers
 app.use('/shoes', require('./controllers/shoesController.js'));
-app.use('/users',  require('./controllers/usersController.js'));
+// app.use('/users',  require('./controllers/usersController.js'));
 
 app.get('/', (req, res) =>{
   res.send('hello to the backend')
 })
 
 app.listen(PORT, ()=> {
-    console.log('listening on port andre 3k')
+    console.log('listening on port andre 5k')
 })

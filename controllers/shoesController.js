@@ -2,9 +2,9 @@ const express = require('express')
 const shoes = express.Router()
 const Shoes = require('../models/shoesModel')
 
-// GET (index) list of bars
+// GET (index) list of shoes
 shoes.get('/', (req, res) => {
-    Bar.find({}, (error, foundShoes) => {
+    Shoes.find({}, (error, foundShoes) => {
       if(error) {
         res.status(400).json({ error: error.message })
       } else {
@@ -12,8 +12,9 @@ shoes.get('/', (req, res) => {
       }
     })
   })
+
   
-  // POST create a bar
+  // POST create a Shoe
   shoes.post('/', (req, res) => {
     Shoes.create(req.body, (error, createdShoes) => {
       if(error) {
@@ -24,7 +25,7 @@ shoes.get('/', (req, res) => {
     })
   })
   
-  // DELETE delete a bar
+  // DELETE delete a shoe
   shoes.delete('/:id', (req, res) => {
     Shoes.findByIdAndDelete(req.params.id, (error, deletedShoes) => {
       if(error) {
@@ -37,7 +38,7 @@ shoes.get('/', (req, res) => {
     })
   })
   
-  // UPDATE update a bar
+  // UPDATE update a shoe
   shoes.put('/:id', (req, res) => {
     Shoes.findByIdAndUpdate(req.params.id, req.body, {new:true}, (error, updatedShoes) => {
       if (error) {
