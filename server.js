@@ -46,6 +46,8 @@ app.use(express.json())
 app.use('/shoes', require('./controllers/shoeController'));
 // app.use('/users',  require('./controllers/usersController'));
 
+app.use("/api/shoes", require('./controllers/shoeController'));
+
 app.get('/', (req, res) =>{
   res.send('hello')
 })
