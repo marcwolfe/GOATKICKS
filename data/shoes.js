@@ -22,7 +22,7 @@ const shoes = [
         price: 299,
         size: 10,
         countInStock: 10,
-        imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaEbH96l60jwRXA42qErWIU-XK2boTz9E__0VS2ZDyP2SrvHPCXXvTqylJ1u-NKS7UyfI&usqp=CAU"
+        imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaEbH96l60jwRXA42qErWIU-XK2boTz9E__0VS2ZDyP2SrvHPCXXvTqylJ1u-NKS7UyfI&usqp=CAU"
     },
     // {
     //     name: "Jordan 11's",

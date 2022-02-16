@@ -43,13 +43,19 @@ db.on('disconnected', () => {console.log('mongo disconnected') })
 app.use(express.json())
 
 //controllers
-app.use('/shoes', require('./controllers/shoeController'));
+// app.use('/shoes', require('./controllers/shoeController'));
 // app.use('/users',  require('./controllers/usersController'));
 
 app.use("/api/shoes", require('./controllers/shoeController'));
 
+// app.use("/api/shoes/:id", require('./controllers/shoeController'));
+
 app.get('/', (req, res) =>{
   res.send('hello')
+})
+
+app.get('/:id', (req, res) =>{
+    res.send('hello')
 })
 
 app.listen(PORT, ()=> {
