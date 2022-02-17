@@ -1,6 +1,6 @@
 const express = require('express')
 const shoes = express.Router()
-const Shoe = require('../models/shoe')
+const Shoe = require('../models/Shoe')
 
 shoes.get('/seed', async (req, res) => {
   const newShoe =
