@@ -9,7 +9,7 @@ const PORT = process.env.PORT;
 
 
 //SETUP CORS middleware
-const whitelist = ['http://localhost:3000', 'https://goatkicks-frontend.herokuapp.com/']
+const whitelist = ['http://localhost:3000', 'https://goatkicks-frontend.herokuapp.com']
 
 const corsOptions = {
     origin: (origin, callback) => {
